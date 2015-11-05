@@ -1,12 +1,10 @@
-var PreInitView = Backbone.View.extend({
+var BackbonePreinitView = Backbone.View.extend({
   constructor: function() {
     this.initialize = function(){};
     Backbone.View.apply(this,arguments);
-    this.__preInit.apply(this,arguments);
+    if (this.preinitialize instanceof Function)
+      this.preinitialize.apply(this,arguments);
     delete this.initialize;
     this.initialize.apply(this,arguments);
-  },
-  __preInit: function(opts) {
-    //do overrideable magic
   }
 })
